@@ -15,9 +15,11 @@ import numpy as np
 
 #start_url = 'https://www.youtube.com/c/BigHitLabels/videos' # 빅히트 url
 play_url = 'https://youtube.com/'
-start_url = 'https://www.youtube.com/user/BANGTANTV/videos?view=0&flow=grid' # 방탄tv url
+#start_url = 'https://www.youtube.com/user/BANGTANTV/videos?view=0&flow=grid' # 방탄tv url
 #start_url = 'https://www.youtube.com/c/SOURCEMUSIC/videos' # 소스뮤직 url
 #start_url = 'https://www.youtube.com/c/pledisartist/videos' # 플레디스 url
+start_url = 'https://www.youtube.com/c/%EA%B8%B1%EB%B8%94Geekble/videos' # 긱블 url
+#start_url = 'https://www.youtube.com/c/motorgraph/videos' # 모터그래프 url
 delay = 3
 browser = webdriver.Chrome('C:/Users/seunghwan/Downloads/chromedriver_win32/chromedriver.exe')
 browser.implicitly_wait(delay)
@@ -27,11 +29,14 @@ browser.get(start_url)
 
 
 body = browser.find_element_by_tag_name('body')#스크롤하기 위해 소스 추출
-num_of_pagedowns = 150 # 방탄 TV
+#num_of_pagedowns = 150 # 방탄 TV
+#num_of_pagedowns = 200 # 모터그래프
 #num_of_pagedowns = 40 # bit hit labels
 #num_of_pagedowns = 1 # test
 #num_of_pagedowns = 8 # 쏘스뮤직
 #num_of_pagedowns = 25 # 플레디스
+num_of_pagedowns = 20 # 긱블
+
 
 #10번 밑으로 내리는 것
 while num_of_pagedowns:
@@ -61,8 +66,18 @@ for i in range(len(video_ls)):
     tim = 1
     try:
         tmp = run_time.text
+        #print(len(tmp))
         for k in range(len(tmp)):
-            if tmp[k] == ':':
+            if len(tmp) >= 18:
+                if tmp[k] == ':':
+                    tmp2 = tmp[0:k]
+                    tim = int(tmp2)*3600
+                    tmp2 = tmp[k+1:k+3]
+                    tim = tim + int(tmp2) * minute
+                    tmp2 = tmp[k+4:k+6]
+                    tim = tim + int(tmp2)
+                    break
+            elif tmp[k] == ':':
                 tmp2 = tmp[0:k]
                 tim = int(tmp2) * minute
                 tim = tim + int(tmp[k+1:])
@@ -83,7 +98,7 @@ for i in range(len(video_ls)):
                     str2 = str1[0:j] + str1[j+1] + "000"
                     #print(str2)
                     break
-            elif str1[j] == '.':
+            if str1[j] == '.':
                 if str1[j+2] == '천':
                     str2 = str1[0:j] + str1[j+1] + "00"
                     #print(str2)
@@ -100,10 +115,9 @@ for i in range(len(video_ls)):
             elif str1[j] == '억':
                 str2 = str1[0:j] + "0000000"
                 break
-
     except:
         str2 = "not data"
-
+    #print(str1)
     #print(str1)
     view_ls.append(str2)
     #print(title.text)
