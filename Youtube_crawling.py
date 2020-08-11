@@ -270,9 +270,6 @@ for i in range(0, len(video_ls)):
 df = pd.DataFrame.from_records(video_info)
 df.to_excel('test.xlsx')
 
-#print(time.time()-start)
-#df.to_csv('test1.csv')
-
 
 # browser.get(big_hit_url[2])
 # body = browser.find_element_by_tag_name('body')  # 스크롤하기 위해 소스 추출
