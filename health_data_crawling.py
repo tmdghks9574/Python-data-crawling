@@ -5,18 +5,8 @@ import pandas as pd # 데이터를 처리하기 위한 가장 기본적인 패�
 import time # 사이트를 불러올 때, 작업 지연시간을 지정해주기 위한 패키지이다. (사이트가 늦게 켜지면 에러가 발생하기 때문)
 import urllib.request #
 from selenium.webdriver import Chrome
-import json
-import re
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
-import datetime as dt
 from selenium import webdriver
-import numpy as np
-import mutable_strings
-#Crawling 할 웹 페이지 주소로 바꿔줘야함
-# str1 = mutable_strings.MutStr("asdasd")
-# str1[3] = '0'
-# print(str1)
 
 base_url = 'https://www.datastore.or.kr/file/list'
 
@@ -39,7 +29,6 @@ last_modified_ls = []
 downloadable_period_ls = []
 category = "안정/복지"
 browser.get(base_url)
-# browser.maximize_window()
 time.sleep(4)
 browser.find_element_by_xpath('//*[@id="mn11"]/div/div[1]/a/span[2]').click()
 time.sleep(2)
