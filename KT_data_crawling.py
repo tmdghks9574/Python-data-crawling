@@ -36,6 +36,7 @@ update_term_ls = []
 data_usage_period_ls = []
 last_modified_ls = []
 downloadable_period_ls = []
+tag_ls = []
 tmp_ls = []
 time.sleep(2)
 for i in range(1,33):
@@ -114,6 +115,13 @@ for i in range(0,32):
     except:
         reload_ls.append("not data")
 
+    try:
+        tag = browser.find_element_by_xpath('//*[@id="tag_li"]').text
+        print(tag)
+    except:
+        print("fuck")
+    exit()
+
     time.sleep(0.5)
 
 dataset = pd.DataFrame({'제목' : [],
@@ -124,6 +132,7 @@ dataset = pd.DataFrame({'제목' : [],
                         '카테고리' : [],
                         '업데이트 주기' : [],
                         '제공기관' : [],
+                        '태그' : [],
                         'url': []})
 
 for i in range(0, 32):
@@ -136,6 +145,7 @@ for i in range(0, 32):
                                 '카테고리' : [category_ls[i]],
                                 '업데이트 주기' : [reload_ls[i]],
                                 '제공기관' : [company_ls[i]],
+                                '태그' : [tag_ls[i]],
                                 'url' : [url_ls[i]]})
 
     dataset = dataset.append(insert_data)
