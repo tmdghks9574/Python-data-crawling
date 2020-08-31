@@ -10,12 +10,10 @@ import numpy as np
 base_url = 'https://bdp.kt.co.kr/invoke/SOKBP2602/'
 
 delay = 3
-#browser = webdriver.Chrome('C:/Users/김영준/Desktop/chromedriver_win32/chromedriver.exe')
 browser = webdriver.Chrome('C:/Users/seunghwan/Downloads/chromedriver_win32/chromedriver.exe')
 browser.implicitly_wait(delay)
 
 browser.get(base_url)
-# browser.maximize_window()
 
 browser.find_element_by_xpath('//*[@id="pageSize_nm"]').click()
 browser.find_element_by_xpath('/html/body/main/section/header/div[2]/div/div/menu/li[4]/span[1]').click()
@@ -119,7 +117,7 @@ for i in range(0,32):
         tag = browser.find_element_by_xpath('//*[@id="tag_li"]').text
         print(tag)
     except:
-        print("fuck")
+        print("not data")
     exit()
 
     time.sleep(0.5)

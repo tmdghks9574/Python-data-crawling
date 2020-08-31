@@ -1,0 +1,44 @@
+base_url : 크롤링할 주소
+
+browser = webdriver.Chrome('크롬드라이버 파일 경로')
+
+browser.get('URL') : 가져올 페이지 이동
+
+browser.find_element_by_xpath('XPATH') : 웹 페이지에서 마우스 우클릭 -> 검사 -> 가져올부분 마우스 우클릭 -> Copy -> Copy Xpath or Copy full Xpath
+                                  원하는 부분 선택후 할 행동 옵션으로 줌 ex) .click() , .send_key()
+
+time.sleep(float) : 웹페이지 로딩시간을 위해 딜레이를 줘야함
+
+url_ls = [] : URL 리스트
+
+title_ls = [] : 제목 리스트
+
+script_ls = [] : 본문 내용 리스트
+
+price_ls = [] : 가격 리스트
+
+category_ls = [] : 카테고리 리스트
+
+company_ls = [] : 제공회사 리스트
+
+postdate_ls = [] : 게시일 리스트
+
+update_term_ls = [] : 업데이트 주기 리스트
+
+data_usage_period_ls = [] : 데이터 사용기간 리스트
+
+last_modified_ls = [] : 최종 수정일자 리스트
+
+downloadable_period_ls = [] : 다운로드 가능기간 리스트
+
+tag_ls = [] : 태그 리스트
+
+.get_attribute('속성') : HTML에서 태그 안에 값들중 원하는 속성에 있는 값을 뽑기위한 함수 (URL은 한번에 뽑을수도 있지만 아닐수도 있으므로 각각 맞게 스트링을 짤라야함)
+
+pd.dataframe() : 엑셀로 뽑기 위해서 각 데이터들을 저장하는곳 (import pandas 필요)
+
+df = pd.DataFrame.from_records(dataset) : df 변수에 dataset을 기록
+
+df.to_excel('파일명.xlsx') : 엑셀로 저장
+
+df.to_csv('파일명.csv', encoding='UTF-8') : CSV로 저장, 한글은 깨지기 때문에 인코딩을 URF-8로 설정해줘야함
